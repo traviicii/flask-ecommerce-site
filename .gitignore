@@ -1,2 +1,4 @@
 .DS_store
 my_venv
+__pycache__
+migrations
