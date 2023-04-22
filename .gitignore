@@ -1,5 +1,10 @@
 .DS_store
 my_venv
+<<<<<<< HEAD
+.env
+__pycache__
+=======
 __pycache__
 migrations
 .env
+>>>>>>> 8c78cf8315b9357938ca679578282dbae4315ca7
