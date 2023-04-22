@@ -6,7 +6,7 @@ from flask import render_template
 
 
 @app.route('/index')
-def index():
+def base():
     return render_template('index.html')
 
 @app.route('/signup')
