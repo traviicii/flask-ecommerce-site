@@ -2,12 +2,10 @@ from app import app
 from flask import render_template
 
 
-@app.route('/')
+
+app.secret_key = 'my_secret_key'
+
 @app.route('/index')
-<<<<<<< HEAD
-def index():
-    return render_template('index.html')
-=======
 def base():
     return render_template('index.html')
 
@@ -37,4 +35,9 @@ def cart():
         _type_: shows the user their current items they have placed in their cart
     """
     return render_template('cart.html')
->>>>>>> 8c78cf8315b9357938ca679578282dbae4315ca7
+
+
+
+
+
+#flask run --port 8000

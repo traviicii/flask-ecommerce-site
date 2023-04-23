@@ -13,4 +13,4 @@ migrate = Migrate(app, db)
 
 
 from . import routes
-#from . import models
+from . import models
