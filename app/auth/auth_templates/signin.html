@@ -1,22 +1,31 @@
 {% extends 'base.html'%}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="signinFrm">
-    <form action="" class="form">
-      <h1 class="title" style="text-align: center;">Sign In</h1>
+  <form action="" method="POST" class="form">
+    <h2 class="title" style="text-align: center; padding-bottom: 0px;">Sign In</h2>
+
+    <div class="signincontainer">
+      {{ form.hidden_tag() }}
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Username</label>
+        {{ form.username(class='form-control', placeholder='Username') }}
       </div>
 
       <div class="inputContainer">
-        <input type="text" class="input" placeholder="a">
-        <label for="" class="label">Password</label>
+        {{ form.password(class='form-control', placeholder='Password') }}
       </div>
 
-      <input type="submit" class="submitBtn" value="Sign In">
-    </form>
-  </div>
+      <div>
+        {{ form.submit(class='btn btn-primary') }}
+      </div>
+    </div>
+  </form>
+</div>
 
 {% endblock %}

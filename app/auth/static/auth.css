@@ -1,0 +1,9 @@
+.admin_dashboard {
+    display: flex;
+    justify-content: center;
+}
+
+.signincontainer {
+    display: flex;
+    justify-content:  center;
+}
