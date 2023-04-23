@@ -7,21 +7,21 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a href="/index">
+                <a href="url_for('index')">
                 <span class="material-symbols-outlined" style="color: white;">
                     cottage
                     <!--goes back to home-->
                 </span>
                 </a>
                 <li class="nav-item">
-                    <a href="{{ url_for('signin') }}">
+                    <a href="{{ url_for('auth.signin') }}">
                         <span class="material-symbols-outlined" style="color: white;">
                             person
                             <!--goes to sign in-->
                         </span>
                     </a>
                 </li>
-                <a href="/signup">
+                <a href="{{ url_for('auth.signup') }}">
                     <span class="material-symbols-outlined" style="color: white;">
                         person_add
                         <!--goes to sign up-->
