@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import LoginForm, SignUpForm, EditProfileForm
+from .forms import LogIn, SignUpForm #EditProfileForm
 from ..models import User
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -34,7 +34,7 @@ def signuppage():
 
 @auth.route('/signin', methods = ["GET", "POST"])
 def sign_in():
-    form = LoginForm()
+    form = LogIn()
     if request.method == 'POST':
         if form.validate():
             print('im here')
