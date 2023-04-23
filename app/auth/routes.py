@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import LogIn, SignUpForm #EditProfileForm
+from .forms import LogIn, SignUpForm
 from ..models import User
 from flask_login import current_user, login_user, logout_user, login_required, login_manager
 
@@ -28,6 +28,7 @@ def signup():
                 'email': email,
                 'username': username
             }
+        flash('Signed up successfully!', "success")
         return redirect(url_for('auth.login'))
     return render_template('signup.html', form = form)
 
@@ -47,11 +48,12 @@ def signin():
                 print(user, 'inside if statement')
                 if user.password == password:
                     login_user(user)
+                    flash('Signed in successfully', "success")
                     return redirect(url_for('base'))
                 else:
-                    print('invalid username or password')
+                    flash('invalid username or password', "danger")
             else:
-                print('Invalid username or password')
+                flash('Invalid username or password', "danger")
                 
     return render_template('signin.html', form = form)
 
@@ -71,11 +73,11 @@ def adminDash():
 
 
 
-# @auth.route('/user')
-# @login_required
-# def user():
+@auth.route('/user')
+@login_required
+def user():
     
-#     return render_template('user.html', user=current_user)
+    return render_template('base.html', user=current_user)
 
 
 

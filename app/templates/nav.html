@@ -1,36 +1,47 @@
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}"> <!--signs.css is for the sign in and sign up-->
+<link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+<!--signs.css is for the sign in and sign up-->
 
 
 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container-fluid">
-        
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <a href="/index">
-                <span class="material-symbols-outlined" style="color: white;">
-                    cottage
-                    <!--goes back to home-->
-                </span>
+                    <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="Home" style="color: white;">
+                        cottage
+                        <!--goes back to home-->
+                    </span>
                 </a>
                 <li class="nav-item">
                     <a href="{{ url_for('auth.signin') }}">
-                        <span class="material-symbols-outlined" style="color: white;">
+                        <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-title="Sign In!" style="color: white;">
                             person
                             <!--goes to sign in-->
                         </span>
                     </a>
                 </li>
                 <a href="{{ url_for('auth.signup') }}">
-                    <span class="material-symbols-outlined" style="color: white;">
+                    <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-title="Sign Up!" style="color: white;">
                         person_add
                         <!--goes to sign up-->
                     </span>
                 </a>
             </ul>
+
+            <a href="{{ url_for('auth.logMeOut') }}">
+                <span class="material-symbols-outlined" style="color: white;">
+                    logout
+                    </span>
+            </a>
             <h1 id="title">Welcome to stuff and things!</h1>
             <a href="{{ url_for('cart') }}" id="cart">
-                <span class="material-symbols-outlined" style="color:white;">
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-title="Shopping Cart!" style="color:white;">
                     shopping_cart
                     <!--goes to shopping cart html-->
                 </span>
@@ -44,6 +55,7 @@
         </div>
     </div>
 </nav>
+
 
 
 
