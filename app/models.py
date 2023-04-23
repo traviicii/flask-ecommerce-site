@@ -1,7 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, current_user
-from flask_migrate import Migrate
 
 db = SQLAlchemy()
 
@@ -14,7 +13,7 @@ class User(db.Model, UserMixin):
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow())
     first_name = db.Column(db.String(25))
     last_name = db.Column(db.String(25))
-    is_admin = db.Column(db.Boolean, default=False)
+    admin = db.Column(db.Boolean, default=False)
 
     def __init__(self, username, password, first_name, last_name, email):
         self.username = username

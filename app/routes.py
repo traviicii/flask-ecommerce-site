@@ -35,9 +35,3 @@ def cart():
         _type_: shows the user their current items they have placed in their cart
     """
     return render_template('cart.html')
-
-
-
-
-
-#flask run --port 8000
