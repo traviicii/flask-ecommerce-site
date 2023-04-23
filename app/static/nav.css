@@ -1,0 +1,24 @@
+.navbar-nav a,
+.navbar-nav li {
+  margin-right: 10px;
+}
+
+.navbar-nav a:last-child,
+.navbar-nav li:last-child {
+  margin-right: 0;
+}
+
+.material-symbols-outlined {
+  padding: 5px;
+}
+
+#title{
+    color: white;
+    text-align: center;
+    margin-right: 350px;
+}
+
+#cart{
+    padding-right: 10px;
+}
+  
