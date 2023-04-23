@@ -33,7 +33,7 @@ def signuppage():
 
 
 @auth.route('/signin', methods = ["GET", "POST"])
-def sign_in():
+def signin():
     form = LogIn()
     if request.method == 'POST':
         if form.validate():
