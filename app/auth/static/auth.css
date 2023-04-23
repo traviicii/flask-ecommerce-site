@@ -7,3 +7,9 @@
     display: flex;
     justify-content:  center;
 }
+
+.admin_product_input {
+    display: flex;
+    justify-content: center;
+    max-width: max-content;
+}

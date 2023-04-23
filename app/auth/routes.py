@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import LogIn, SignUpForm
+from .forms import LogIn, SignUpForm, Inventory
 from ..models import User
 from flask_login import current_user, login_user, logout_user, login_required, login_manager
 
@@ -64,10 +64,11 @@ def logMeOut():
     logout_user()
     return redirect(url_for('auth.signin'))
 
-@auth.route('/admin')
+@auth.route('/admin', methods = ["GET", "POST"])
 def adminDash():
+    form = Inventory()
     if User.is_admin():
-        return render_template('admin.html')
+        return render_template('admin.html', form=form)
     else:
         return redirect(url_for('base'))
 

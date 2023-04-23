@@ -9,6 +9,8 @@
 
 <div class="admin_dashboard">
 <h1>Admin Dashboard</h1>
+
+<div class="admin_product_input">
 <form method="POST" class="">
     {{ form.hidden_tag() }}
 
@@ -17,12 +19,14 @@
     {{ form.quantity(class='form-control', placeholder="Quantity") }}
     {{ form.description(class='form-control', placeholder="Description") }}
     {{ form.image(class='form-control', placeholder="Image") }}
-    {{ form.image1(class='form-control', placeholder="Image1") }}
+    {{ form.image(class='form-control', placeholder="Image1") }}
     {{ form.image2(class='form-control', placeholder="Image2") }}
     {{ form.image3(class='form-control', placeholder="Image3") }}
     {{ form.image4(class='form-control', placeholder="Image4") }}
+    {{ form.submit(class='btn btn-primary') }}
 
 </form>
+</div>
 </div>
 
 
