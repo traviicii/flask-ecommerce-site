@@ -8,7 +8,7 @@ auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
 
 @auth.route('/signup', methods = ["GET", "POST"])
-def signuppage():
+def signup():
     
     form = SignUpForm()
     
