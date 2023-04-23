@@ -24,6 +24,7 @@ class Address(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     zip = IntegerField('zip', validators=[DataRequired()])
+    submit = SubmitField()
 
 class Inventory(FlaskForm):
 
@@ -35,3 +36,4 @@ class Inventory(FlaskForm):
     image2 = StringField('Product Name', validators=[DataRequired()])
     image3 = StringField('Product Name', validators=[DataRequired()])
     image4 = StringField('Product Name', validators=[DataRequired()])
+    submit = SubmitField()
