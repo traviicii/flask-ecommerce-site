@@ -53,8 +53,6 @@ def editItem(prodid):
                 flash('Product added to Inventory!', 'success')
                 return render_template('index.html', form=form)
     return render_template('index.html', form=form)
-                
-
 
 
 
