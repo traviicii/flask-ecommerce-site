@@ -2,9 +2,19 @@
 
 {% block content %}
 
-<h1 style="text-align: center;">this is the shopping cart</h1>
-
-
+<div class="cart">
+    <h2 style="text-align: center;">Your Cart</h2>
+    <br>
+    <ul>
+        {% for item in checkoutCart %}
+        <li>{{ item.product_name }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ total }}</p>
+    
+        <button type="submit" class="btn btn-primary">Checkout</button>
+ 
+</div>
 
 
 
