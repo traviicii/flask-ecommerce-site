@@ -12,6 +12,14 @@
     flex-wrap: wrap;
     flex-flow: row;
 }
+
+.product_buttons {
+    display: flex;
+    flex-flow:wrap;
+    flex-direction:row;
+
+}
+
   
 #details{
     margin-left: 105px;
