@@ -30,8 +30,7 @@ class Inventory(FlaskForm):
 
     product_name = StringField('Product Name', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
-    quantity = IntegerField('Quantity', validators=[DataRequired()])
-    description = IntegerField('Description', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
     image = StringField('Product Name', validators=[DataRequired()])
     image2 = StringField('Product Image')
     image3 = StringField('Product Image')

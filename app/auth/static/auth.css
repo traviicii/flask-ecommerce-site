@@ -1,15 +1,18 @@
 .admin_dashboard {
     display: flex;
     justify-content: center;
+    background-color: blueviolet;
 }
 
 .signincontainer {
     display: flex;
     justify-content:  center;
+    color: blueviolet;
 }
 
 .admin_product_input {
     display: flex;
     justify-content: center;
     max-width: max-content;
+    color: blueviolet;
 }
