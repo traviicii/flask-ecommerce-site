@@ -6,8 +6,9 @@
     <h2 style="text-align: center;">Your Cart</h2>
     <br>
     <ul>
-        {% for item in checkoutCart %}
-        <li>{{ item.product_name }} - ${{ item.price }}</li>
+        {% for cart in usercart %}
+        
+        <li>{{ cart.item.product_name }} - ${{ cart.item.price }}</li>
         {% endfor %}
     </ul>
     <p>Total: ${{ total }}</p>

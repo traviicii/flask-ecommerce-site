@@ -22,8 +22,13 @@ def base():
 def cart():
     cartSize = Cart.Size()
 
+    usercart = Cart.query.filter_by(user_id=current_user.id).all()
+    
+    total = 0
+    for cart in usercart:
+        total += cart.item.price
 
-    return render_template('cart.html', cartSize=cartSize)
+    return render_template('cart.html', cartSize=cartSize, usercart=usercart, total=total)
 
 @app.route('/addtocart/<int:prodid>')
 def addToCart(prodid):
