@@ -1,32 +1,31 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
 {% endblock %}
 
 {% block content %}
 
-<div class="admin_dashboard">
-<h1>Admin Dashboard</h1>
+<div class="admin_dashboard" style="display: flex; justify-content: center; flex-flow:column">
+    <h1>Admin Dashboard</h1>
 
-<div class="admin_product_input">
-<form method="POST" class="">
-    {{ form.hidden_tag() }}
+    <div class="admin_product_input" style="max-width: max-content;">
+        <h2>Add Products to Inventory</h2>
+        <form method="POST" class="">
+            {{ form.hidden_tag() }}
 
-    {{ form.product_name(class='form-control', placeholder="Product Name") }}
-    {{ form.price(class='form-control', placeholder="Price") }}
-    {{ form.quantity(class='form-control', placeholder="Quantity") }}
-    {{ form.description(class='form-control', placeholder="Description") }}
-    {{ form.image(class='form-control', placeholder="Image") }}
-    {{ form.image(class='form-control', placeholder="Image1") }}
-    {{ form.image2(class='form-control', placeholder="Image2") }}
-    {{ form.image3(class='form-control', placeholder="Image3") }}
-    {{ form.image4(class='form-control', placeholder="Image4") }}
-    {{ form.submit(class='btn btn-primary') }}
+            {{ form.product_name(class='form-control', placeholder="Product Name") }}
+            {{ form.price(class='form-control', placeholder="Price") }}
+            {{ form.description(class='form-control', placeholder="Description") }}
+            {{ form.image(class='form-control', placeholder="Image") }}
+            {{ form.image2(class='form-control', placeholder="Image2") }}
+            {{ form.image3(class='form-control', placeholder="Image3") }}
+            {{ form.image4(class='form-control', placeholder="Image4") }}
+            {{ form.submit(class='btn btn-primary') }}
 
-</form>
-</div>
+        </form>
+    </div>
 </div>
 
 

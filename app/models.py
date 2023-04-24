@@ -34,24 +34,22 @@ class User(db.Model, UserMixin):
         db.session.commit()
 
 
-class Inventory():
+class Inventory(db.Model):
 
-    id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(25), nullable = False, unique = True)
-    price = db.Column(db.Integer, primary_key = True, autoincrement = False)
-    quantity = db.Column(db.Integer, primary_key = True, autoincrement = False)
+    id = db.Column(db.Integer, primary_key = True, unique=True)
+    product_name = db.Column(db.String(50), nullable = False, unique = True)
+    price = db.Column(db.Float, nullable = False)
+    # quantity = db.Column(db.Integer, primary_key = True, autoincrement = False)
     description = db.Column(db.String(500), nullable = False)
     image = db.Column(db.String(500), nullable = False)
-    image2 = db.Column(db.String(500), nullable = False) #optional
-    image3 = db.Column(db.String(500), nullable = False) #optional
-    image4 = db.Column(db.String(500), nullable = False) #optional
+    image2 = db.Column(db.String(500)) #optional
+    image3 = db.Column(db.String(500)) #optional
+    image4 = db.Column(db.String(500)) #optional
 
-    def __init__(self, username, password, first_name, last_name, email, image, image2, image3, image4):
-        self.username = username
-        self.password = password
-        self.email = email
-        self.first_name = first_name
-        self.last_name = last_name
+    def __init__(self, product_name, price, description, image, image2, image3, image4):
+        self.product_name = product_name
+        self.price = price
+        self.description = description
         self.image = image
         self.image2 = image2
         self.image3 = image3
@@ -66,7 +64,7 @@ class Inventory():
         db.session.commit()
 
 
-class Cart():
+class Cart(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False, autoincrement = False)
