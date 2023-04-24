@@ -3,4 +3,13 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+
+#checkout{
+    float: right;
+    margin-right: 300px;
+}
   
+#total{
+    text-align: right;
+    margin-right: 300px;
+}

@@ -2,21 +2,22 @@
 
 {% block content %}
 
+<h2 style="text-align: center;">Your Cart</h2>
 <div class="cart">
-    <h2 style="text-align: center;">Your Cart</h2>
-    <br>
     <ul>
         {% for cart in usercart %}
         
-        <li>{{ cart.item.product_name }} - ${{ cart.item.price }}</li>
+        <li><img src="{{ cart.item.image }}" alt="" style="width: 225px; height:225px;"> {{ cart.item.product_name }} - ${{ cart.item.price }}</li>
         {% endfor %}
     </ul>
-    <p>Total: ${{ total }}</p>
     
-        <button type="submit" class="btn btn-primary">Checkout</button>
- 
+    
+</div>
+<div>
+<p id="total">Total: ${{ total }}</p>
 </div>
 
+<button type="submit" class="btn btn-primary" id="checkout">Checkout</button>
 
 
 {% endblock %} 
