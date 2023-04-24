@@ -1,5 +1,5 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import Address, LogIn, SignUpForm, InventoryField, EditProduct
+from .forms import Address, LogIn, SignUpForm, InventoryField
 from ..models import Cart, Inventory, Order, User
 from flask_login import current_user, login_user, logout_user, login_required, login_manager
 
@@ -68,7 +68,7 @@ def logMeOut():
 @auth.route('/admin', methods=["GET", "POST"])
 @login_required
 def adminDash():
-    form = EditProduct()
+    form = InventoryField()
     if User.is_admin():
         print('The user is an admin!!')
         if request.method == 'POST':
@@ -77,6 +77,10 @@ def adminDash():
                 product_name = form.product_name.data
                 price = form.price.data
                 description = form.description.data
+                image = form.image.data
+                image2 = form.image2.data
+                image3 = form.image3.data
+                image4 = form.image4.data
 
                 product = Inventory(product_name, price, description, image, image2, image3, image4)
                 print('Product instance is created')
