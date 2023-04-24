@@ -69,13 +69,16 @@ def logMeOut():
 def adminDash():
     form = InventoryField()
     if User.is_admin():
-        print('The user is an admin!')
+        print('The user is an admin!!')
         if request.method == 'POST':
             if form.validate():
                 print('im right here')
                 product_name = form.product_name.data
+                print('product name')
                 price = form.price.data
+                print('price')
                 description = form.description.data
+                print('description')
                 image = form.image.data
                 image2 = form.image2.data
                 image3 = form.image3.data
