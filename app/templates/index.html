@@ -9,8 +9,10 @@
             <img src="{{ product.image }}" class="card-img-top" alt="...">
         </span>
         <div class="card-body">
+        <div style="display: flex; justify-content:space-between">
             <p class="card-text">{{ product.product_name }}</p>
-            <span>Price: ${{ product.price }}</span>
+            <p>${{ product.price }}</p>
+        </div>
             <div class="product_buttons">
                 <a class="btn btn-primary" href="#" role="button" id="details">More Details</a>
                 {% if admin == True %}
