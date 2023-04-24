@@ -13,6 +13,7 @@ app.secret_key = 'my_secret_key'
 def base():
     products = Inventory.query.all()
     admin = User.is_admin()
+    print(admin)
     return render_template('index.html', products=products, admin=admin)
 
 @app.route('/cart')
