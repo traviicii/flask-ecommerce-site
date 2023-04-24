@@ -12,6 +12,9 @@
         <p class="card-text">{{ product.description }}</p>
             <span>Price: ${{ product.price }}</span>
             <a class="btn btn-primary" href="#" role="button" id="details">More Details</a>
+            {% if admin %}
+            <a class="btn btn-danger" href="/remove/{{ product.id }}" role="button" id="details">DELETE ITEM</a>
+            {% endif %}
     </div>
 </div>
 {% endfor %}

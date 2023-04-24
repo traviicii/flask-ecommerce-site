@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 
-{% block head %}
-{{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
-{% endblock %}
-
 {% block content %}
 
-<div class="admin_dashboard" style="display: flex; justify-content: center; flex-flow:column">
+
+<div class="admin_dashboard">
     <h1>Admin Dashboard</h1>
 
     <div class="admin_product_input" style="max-width: max-content;">
         <h2>Add Products to Inventory</h2>
-        <form method="POST" class="">
+        <form method="POST" class="" >
             {{ form.hidden_tag() }}
 
             {{ form.product_name(class='form-control', placeholder="Product Name") }}
