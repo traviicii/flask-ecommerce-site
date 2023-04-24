@@ -1,0 +1,19 @@
+#products {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+  }
+  
+#details{
+    margin-left: 105px;
+    background-color: blue;
+    color: white;
+    cursor: pointer; 
+}
+
+.card-img-top{
+    width: 250px;
+    height: 250px;
+}

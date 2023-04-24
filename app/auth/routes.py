@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import LogIn, SignUpForm
+from .forms import LogIn, SignUpForm, Inventory
 from ..models import User
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required, login_manager
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
@@ -43,9 +43,9 @@ def signin():
             password = form.password.data
             
             user = User.query.filter_by(username=username).first()
-            print(user)
+            print(user, 'befor if statement')
             if user:
-                print(user)
+                print(user, 'inside if statement')
                 if user.password == password:
                     login_user(user)
                     flash('Signed in successfully', "success")
@@ -59,9 +59,19 @@ def signin():
 
 #auth
 @auth.route('/logout')
+@login_required
 def logMeOut():
     logout_user()
     return redirect(url_for('auth.signin'))
+
+@auth.route('/admin', methods = ["GET", "POST"])
+def adminDash():
+    form = Inventory()
+    if User.is_admin():
+        return render_template('admin.html', form=form)
+    else:
+        return redirect(url_for('base'))
+
 
 
 @auth.route('/user')

@@ -3,7 +3,7 @@
 <!--signs.css is for the sign in and sign up-->
 
 
-<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" id="nav">
     <div class="container-fluid">
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,11 +33,14 @@
                 </a>
             </ul>
 
-            <a href="{{ url_for('auth.logMeOut') }}" id="logout">
+            
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('auth.logMeOut') }}">
                 <span class="material-symbols-outlined" style="color: white;">
                     logout
                     </span>
             </a>
+            {% endif %}
             <h1 id="title">Welcome to stuff and things!</h1>
             <a href="{{ url_for('cart') }}" id="cart">
                 <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
