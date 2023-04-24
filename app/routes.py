@@ -31,8 +31,20 @@ def addToCart(prodid):
     item.saveToDB()
     return redirect(url_for('base'))
 
+@app.route('/removefromcart/<int:prodid>') #removes an item from the cart
+def removeFromCart(prodid):
+    removeme = Cart.query.filter_by(prod_id=prodid).first()
+    removeme.deleteFromDB()
+    return render_template(url_for('/cart'))
+
+@app.route('/emptycart')
+def emptyCart():
+    cart = Cart.query.filter_by(user_id=current_user.id).all()
+    cart.deleteFromDB()
+    return redirect('index.html')
+
 @app.route('/remove/<int:prodid>')
-def removeItem(prodid):
+def removeItem(prodid): #This is an admin feature to remove an item from inventory
     deleteme = Inventory.query.filter_by(id=prodid).first()
     deleteme.deleteFromDB()
     return render_template('index.html')
@@ -62,8 +74,9 @@ def editItem(prodid):
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
+    cartSize = Cart.Size()
     product = Inventory.query.get_or_404(product_id)
-    return render_template('product.html', product=product)
+    return render_template('product.html', product=product, cartSize=cartSize)
 
 
 
