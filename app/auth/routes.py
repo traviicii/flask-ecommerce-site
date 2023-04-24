@@ -64,29 +64,29 @@ def logMeOut():
     logout_user()
     return redirect(url_for('auth.signin'))
 
-@auth.route('/admin', methods = ["GET", "POST"])
+@auth.route('/admin', methods=["GET", "POST"])
 @login_required
 def adminDash():
-    form = Inventory()
+    form = InventoryField()
     if User.is_admin():
         print('The user is an admin!')
-        print('Method is POST')
-        if form.validate():
-            print('im right here')
-            product_name = form.product_name.data
-            price = form.price.data
-            description = form.description.data
-            image = form.image.data
-            image2 = form.image2.data
-            image3 = form.image3.data
-            image4 = form.image4.data
+        if request.method == 'POST':
+            if form.validate():
+                print('im right here')
+                product_name = form.product_name.data
+                price = form.price.data
+                description = form.description.data
+                image = form.image.data
+                image2 = form.image2.data
+                image3 = form.image3.data
+                image4 = form.image4.data
 
-            product = Inventory(product_name, price, description, image, image2, image3, image4)
-            print('Product instance is created')
-            product.saveToDB()
-            print('Product added to Inventory!')
+                product = Inventory(product_name, price, description, image, image2, image3, image4)
+                print('Product instance is created')
+                product.saveToDB()
+                print('Product added to Inventory!')
 
-        return render_template('admin.html', form=form)
+                return render_template('admin.html', form=form)
     else:
         return redirect(url_for('base'))
 
