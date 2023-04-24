@@ -7,7 +7,7 @@
     <ul>
         {% for cart in usercart %}
         
-        <li><img src="{{ cart.item.image }}" alt="" style="width: 225px; height:225px;"> {{ cart.item.product_name }} - ${{ cart.item.price }}</li>
+        <li><a type="button" class="btn btn-danger" href="/removefromcart/{{ cart.id }}">Remove Item</a><img src="{{ cart.item.image }}" alt="" style="width: 225px; height:225px;"> {{ cart.item.product_name }} - ${{ cart.item.price }} </li>
         {% endfor %}
     </ul>
     

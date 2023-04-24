@@ -23,7 +23,7 @@ def cart():
     cartSize = Cart.Size()
 
     usercart = Cart.query.filter_by(user_id=current_user.id).all()
-    
+
     total = 0
     for cart in usercart:
         total += cart.item.price
@@ -34,13 +34,15 @@ def cart():
 def addToCart(prodid):
     item = Cart(current_user.id, prodid)
     item.saveToDB()
+    flash('Item successfully added to your cart!', 'success')
     return redirect(url_for('base'))
 
-@app.route('/removefromcart/<int:prodid>') #removes an item from the cart
-def removeFromCart(prodid):
-    removeme = Cart.query.filter_by(prod_id=prodid).first()
+@app.route('/removefromcart/<int:cartid>') #removes an item from the cart
+def removeFromCart(cartid):
+    removeme = Cart.query.filter_by(id=cartid).first()
     removeme.deleteFromDB()
-    return render_template(url_for('/cart'))
+    flash('Item removed from cart', 'success')
+    return redirect(url_for('cart'))
 
 @app.route('/emptycart')
 def emptyCart():
