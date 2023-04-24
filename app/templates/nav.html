@@ -35,8 +35,10 @@
 
             
             {% if current_user.is_authenticated %}
+            <p style="color: white; margin-right:20px;">Hello {{ current_user.username }}</p>
             <a href="{{ url_for('auth.logMeOut') }}">
-                <span class="material-symbols-outlined" style="color: white;">
+                <span class="material-symbols-outlined" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                data-bs-title="Logout" style="color: white; margin-right:200px;">
                     logout
                     </span>
             </a>
