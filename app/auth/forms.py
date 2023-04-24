@@ -36,3 +36,10 @@ class InventoryField(FlaskForm):
     image3 = StringField('Product Image')
     image4 = StringField('Product Image')
     submit = SubmitField()
+
+class EditProduct(FlaskForm):
+
+    product_name = StringField('Product Name', validators=[DataRequired()])
+    price = FloatField('Price', validators=[DataRequired()])
+    description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField()

@@ -62,6 +62,7 @@ def signin():
 @login_required
 def logMeOut():
     logout_user()
+    flash("You've been successfully logged out", 'success')
     return redirect(url_for('auth.signin'))
 
 @auth.route('/admin', methods=["GET", "POST"])
@@ -74,11 +75,8 @@ def adminDash():
             if form.validate():
                 print('im right here')
                 product_name = form.product_name.data
-                print('product name')
                 price = form.price.data
-                print('price')
                 description = form.description.data
-                print('description')
                 image = form.image.data
                 image2 = form.image2.data
                 image3 = form.image3.data
@@ -87,7 +85,7 @@ def adminDash():
                 product = Inventory(product_name, price, description, image, image2, image3, image4)
                 print('Product instance is created')
                 product.saveToDB()
-                print('Product added to Inventory!')
+                flash('Product added to Inventory!', 'success')
 
                 return render_template('admin.html', form=form)
     return render_template('admin.html', form=form)
