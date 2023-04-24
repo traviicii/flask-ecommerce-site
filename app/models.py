@@ -70,6 +70,17 @@ class Cart(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False, autoincrement = False)
     prod_id = db.Column(db.Integer, db.ForeignKey('inventory.id'), nullable = False, autoincrement = False)
 
+    def  Size(): #this will return the size of a logged in user's cart
+        if current_user.is_authenticated:
+            size = len(Cart.query.filter_by(user_id=current_user.id).all())
+            if size > 0:
+                return size
+            else:
+                return ''
+        else:
+            return ''
+
+
     def __init__(self, user_id, prod_id):
         self.user_id = user_id
         self.prod_id = prod_id

@@ -1,7 +1,8 @@
 from app import app
 from flask import render_template, flash, redirect, request, url_for
-from .models import Inventory, User
+from .models import Inventory, User, Cart
 from app.auth.forms import InventoryField
+from flask_login import current_user
 
 
 
@@ -11,19 +12,24 @@ app.secret_key = 'my_secret_key'
 
 @app.route('/index')
 def base():
+    cartSize = Cart.Size()
     products = Inventory.query.all()
     admin = User.is_admin()
     print(admin)
-    return render_template('index.html', products=products, admin=admin)
+    return render_template('index.html', products=products, admin=admin, cartSize=cartSize)
 
 @app.route('/cart')
 def cart():
-    """shopping cart page
+    cartSize = Cart.Size()
 
-    Returns:
-        _type_: shows the user their current items they have placed in their cart
-    """
-    return render_template('cart.html')
+
+    return render_template('cart.html', cartSize=cartSize)
+
+@app.route('/addtocart/<int:prodid>')
+def addToCart(prodid):
+    item = Cart(current_user.id, prodid)
+    item.saveToDB()
+    return redirect(url_for('base'))
 
 @app.route('/remove/<int:prodid>')
 def removeItem(prodid):

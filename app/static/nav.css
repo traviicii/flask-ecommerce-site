@@ -22,6 +22,11 @@
     padding-right: 10px;
 }
 
+#cart_size {
+  color: white;
+  padding-top: 15px;
+}
+
 #logout{
     margin-right: 300px;
 }
