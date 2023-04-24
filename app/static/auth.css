@@ -1,0 +1,10 @@
+.admin_dashboard {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction:column
+}
+
+.admin_product_input {
+    max-width: max-content;
+}

@@ -1,14 +1,14 @@
 {% extends 'base.html'%}
 
 {% block head %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='auth/auth.css') }}">
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='auth/auth.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="signinFrm">
   <form action="" method="POST" class="form">
-    <h2 class="title" style="text-align: center; padding-bottom: 0px;">Sign In</h2>
+    <h2 class="title">Sign In</h2>
 
     <div class="signincontainer">
       {{ form.hidden_tag() }}
