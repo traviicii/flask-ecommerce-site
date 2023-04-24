@@ -64,7 +64,6 @@ def logMeOut():
     logout_user()
     return redirect(url_for('auth.signin'))
 
-
 @auth.route('/admin', methods=["GET", "POST"])
 @login_required
 def adminDash():
