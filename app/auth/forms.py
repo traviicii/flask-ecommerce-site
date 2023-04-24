@@ -26,7 +26,7 @@ class Address(FlaskForm):
     zip = IntegerField('zip', validators=[DataRequired()])
     submit = SubmitField()
 
-class Inventory(FlaskForm):
+class InventoryField(FlaskForm):
 
     product_name = StringField('Product Name', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
