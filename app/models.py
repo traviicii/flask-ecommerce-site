@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
         self.email = email
 
     def is_admin():
-        return current_user.is_authenticated and current_user.is_admin
+        return current_user.is_authenticated and current_user.admin
  
     def saveToDB(self):
         db.session.add(self)

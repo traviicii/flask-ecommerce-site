@@ -2,40 +2,38 @@
 
 {% block content %}
 <div class="signupFrm">
-    <form action="" class="form">
+    <form action="" method="POST" class="form">
         <h1 class="title" style="text-align: center;">Sign up</h1>
 
-        <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">First Name</label>
-        </div>
+        {{ form.hidden_tag() }}
 
+        
         <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">Last Name</label>
+            {{ form.username(class='form-control', placeholder='Username') }}
         </div>
-
+        
         <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">Email</label>
+            {{ form.password(class='form-control', placeholder='Password') }}
         </div>
-
+        
         <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">Username</label>
+            {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
         </div>
-
+        
         <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">Password</label>
+            {{ form.first_name(class='form-control', placeholder='First Name') }}
         </div>
-
+        
         <div class="inputContainer">
-            <input type="text" class="input" placeholder="a">
-            <label for="" class="label">Confirm Password</label>
+            {{ form.last_name(class='form-control', placeholder='Last Name') }}
         </div>
-        <div style="display:flex; justify-content: center;">
-            <input type="submit" class="submitBtn" value="Sign up">
+        
+        <div class="inputContainer">
+            {{ form.email(class='form-control', placeholder='Email') }}
+        </div>
+        
+        <div class="inputContainer">
+            {{ form.submit(class='btn btn-primary submitBtn justify-content-center') }}
         </div>
     </form>
 </div>

@@ -13,21 +13,17 @@ def signup():
 
     if request.method == 'POST':
         if form.validate():
+            username = form.username.data
+            password = form.password.data
             first_name = form.first_name.data
             last_name = form.last_name.data
             email = form.email.data
-            username = form.username.data
-            password = form.password.data
 
             user = User(username, password, first_name, last_name, email)
 
             user.saveToDB()
-            account = {
-                'email': email,
-                'username': username
-            }
-        flash('Signed up successfully!', "success")
-        return redirect(url_for('auth.login'))
+            flash('Signed up successfully!', "success")
+            return redirect(url_for('auth.signin'))
     return render_template('signup.html', form=form)
 
 
