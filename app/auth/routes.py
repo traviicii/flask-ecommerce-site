@@ -1,17 +1,16 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from .forms import Address, LogIn, SignUpForm, Inventory
+from .forms import Address, LogIn, SignUpForm, InventoryField
 from ..models import Cart, Inventory, Order, User
 from flask_login import current_user, login_user, logout_user, login_required, login_manager
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
 
-
-@auth.route('/signup', methods = ["GET", "POST"])
+@auth.route('/signup', methods=["GET", "POST"])
 def signup():
-    
+
     form = SignUpForm()
-    
+
     if request.method == 'POST':
         if form.validate():
             first_name = form.first_name.data
@@ -19,10 +18,9 @@ def signup():
             email = form.email.data
             username = form.username.data
             password = form.password.data
-            
-            
+
             user = User(username, password, first_name, last_name, email)
-            
+
             user.saveToDB()
             account = {
                 'email': email,
@@ -30,10 +28,10 @@ def signup():
             }
         flash('Signed up successfully!', "success")
         return redirect(url_for('auth.login'))
-    return render_template('signup.html', form = form)
+    return render_template('signup.html', form=form)
 
 
-@auth.route('/signin', methods = ["GET", "POST"])
+@auth.route('/signin', methods=["GET", "POST"])
 def signin():
     form = LogIn()
     if request.method == 'POST':
@@ -41,7 +39,7 @@ def signin():
             print('im here')
             username = form.username.data
             password = form.password.data
-            
+
             user = User.query.filter_by(username=username).first()
             print(user, 'befor if statement')
             if user:
@@ -54,50 +52,50 @@ def signin():
                     flash('invalid username or password', "danger")
             else:
                 flash('Invalid username or password', "danger")
-                
-    return render_template('signin.html', form = form)
 
-#auth
+    return render_template('signin.html', form=form)
+
+# auth
+
+
 @auth.route('/logout')
 @login_required
 def logMeOut():
     logout_user()
     return redirect(url_for('auth.signin'))
 
-@auth.route('/admin', methods = ["GET", "POST"])
+
+@auth.route('/admin', methods=["GET", "POST"])
 @login_required
 def adminDash():
-    form = Inventory()
+    form = InventoryField()
     if User.is_admin():
         print('The user is an admin!')
-        print('Method is POST')
-        if form.validate():
-            print('im right here')
-            product_name = form.product_name.data
-            price = form.price.data
-            description = form.description.data
-            image = form.image.data
-            image2 = form.image2.data
-            image3 = form.image3.data
-            image4 = form.image4.data
+        if request.method == 'POST':
+            if form.validate():
+                print('im right here')
+                product_name = form.product_name.data
+                price = form.price.data
+                description = form.description.data
+                image = form.image.data
+                image2 = form.image2.data
+                image3 = form.image3.data
+                image4 = form.image4.data
 
-            product = Inventory(product_name, price, description, image, image2, image3, image4)
-            print('Product instance is created')
-            product.saveToDB()
-            print('Product added to Inventory!')
+                product = Inventory(product_name, price, description, image, image2, image3, image4)
+                print('Product instance is created')
+                product.saveToDB()
+                print('Product added to Inventory!')
 
-        return render_template('admin.html', form=form)
-    else:
-        return redirect(url_for('base'))
-
+                return render_template('admin.html', form=form)
+    return render_template('admin.html', form=form)
 
 
 @auth.route('/user')
 @login_required
 def user():
-    
-    return render_template('base.html', user=current_user)
 
+    return render_template('base.html', user=current_user)
 
 
 # @auth.route('/edit_profile', methods=['GET', 'POST'])
@@ -119,7 +117,7 @@ def user():
 #             current_user.from_dict(edited_user_data)
 #             current_user.save_to_db()
 #             flash('profile updated', "success")
-               
+
 #         except:
 #             flash('error updating profile', 'danger')
 #             return redirect(url_for('auth.edit_profile'))
