@@ -9,13 +9,15 @@
             <img src="{{ product.image }}" class="card-img-top" alt="...">
         </span>
         <div class="card-body">
+        <div style="display: flex; justify-content:space-between">
             <p class="card-text">{{ product.product_name }}</p>
-            <span>Price: ${{ product.price }}</span>
+            <p>${{ product.price }}</p>
+        </div>
             <div class="product_buttons">
-                <a class="btn btn-primary" href="#" role="button" id="details">More Details</a>
-                {% if admin == True %}
-                <a class="btn btn-primary" href="/edititem/{{ product.id }}" role="buttom" id="details">Edit Item</a>
-                <a class="btn btn-danger" href="/remove/{{ product.id }}" role="button" id="details">Delete Item</a>
+                <a class="btn btn-primary" href="{{ url_for('product_detail', product_id=product.id) }}" role="button" id="details">More Details</a>
+                {% if admin %}
+                <a class="btn btn-primary" href="{{ url_for('editItem', prodid=product.id) }}" role="button" id="details">Edit Item</a>
+                <a class="btn btn-danger" href="{{ url_for('removeItem', prodid=product.id) }}" role="button" id="details">Delete Item</a>
                 {% endif %}
             </div>
         </div>
@@ -23,5 +25,5 @@
     {% endfor %}
 </div>
 
-
 {% endblock %}
+

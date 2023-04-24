@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="product_details">
+    <div class="card product_details" style="width: 20rem;">
+        <span class="border-bottom" style="color: black;">
+            <img src="{{ product.image }}" class="card-img-top" alt="...">
+        </span>
+        <div class="card-body">
+            <p class="card-text">{{ product.product_name }}</p>
+            <p>${{ product.price }}</p>
+            <p>{{ product.description }}</p>
+            <form methods="POST" action="{{ url_for('cart') }}">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

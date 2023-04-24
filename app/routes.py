@@ -53,7 +53,12 @@ def editItem(prodid):
                 flash('Product added to Inventory!', 'success')
                 return render_template('index.html', form=form)
     return render_template('index.html', form=form)
-                
+
+@app.route('/product/<int:product_id>')
+def product_detail(product_id):
+    product = Inventory.query.get_or_404(product_id)
+    return render_template('product.html', product=product)
+
 
 
 
