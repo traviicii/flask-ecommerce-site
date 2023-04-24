@@ -46,6 +46,7 @@ def removeFromCart(prodid):
 def emptyCart():
     cart = Cart.query.filter_by(user_id=current_user.id).all()
     cart.deleteFromDB()
+    flash('Purchase made successfully', 'success')
     return redirect('index.html')
 
 @app.route('/remove/<int:prodid>')
@@ -82,13 +83,6 @@ def product_detail(product_id):
     cartSize = Cart.Size()
     product = Inventory.query.get_or_404(product_id)
     return render_template('product.html', product=product, cartSize=cartSize)
-
-
-
-
-
-
-
 
 
 #flask run --port 8000
