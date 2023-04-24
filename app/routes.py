@@ -1,17 +1,17 @@
 from app import app
-from flask import render_template
+from flask import render_template, flash
+from .models import Inventory
 
 
 
 app.secret_key = 'my_secret_key'
 
 @app.route('/')
-def home():
-    return render_template('index.html')
 
 @app.route('/index')
 def base():
-    return render_template('index.html')
+    products = Inventory.query.all()
+    return render_template('index.html', products=products)
 
 @app.route('/cart')
 def cart():
