@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin, current_user
+from werkzeug.security import generate_password_hash
+from secrets import token_hex
 
 db = SQLAlchemy()
 
@@ -8,19 +10,32 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(25), nullable = False, unique = True)
-    password = db.Column(db.String(100), nullable = False)
+    password = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(100), nullable = False, unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default=datetime.utcnow())
     first_name = db.Column(db.String(25))
     last_name = db.Column(db.String(25))
     admin = db.Column(db.Boolean, default=False)
+    apitoken = db.Column(db.String, unique = True)
 
     def __init__(self, username, password, first_name, last_name, email):
         self.username = username
-        self.password = password
+        self.password = generate_password_hash(password)
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
+        self.apitoken = token_hex(16)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'apitoken': self.apitoken
+        }
+
 
     def is_admin():
         return current_user.is_authenticated and current_user.admin
@@ -62,6 +77,18 @@ class Inventory(db.Model):
     def deleteFromDB(self):
         db.session.delete(self)
         db.session.commit()
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'product_name': self.product_name,
+            'price': self.price,
+            'description': self.description,
+            'image': self.image,
+            'image2': self.image2,
+            'image3': self.image3,
+            'image4': self.image4,
+        }
 
 
 class Cart(db.Model):
