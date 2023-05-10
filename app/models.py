@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(25))
     admin = db.Column(db.Boolean, default=False)
     apitoken = db.Column(db.String, unique = True)
+    cart = db.relationship('Inventory', secondary='cart', backref='shoppers', lazy=True) ###
 
     def __init__(self, username, password, first_name, last_name, email):
         self.username = username
