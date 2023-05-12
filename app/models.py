@@ -88,7 +88,7 @@ class Inventory(db.Model):
             'image': self.image,
             'image2': self.image2,
             'image3': self.image3,
-            'image4': self.image4,
+            'image4': self.image4
         }
 
 
